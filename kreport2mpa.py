@@ -194,3 +194,28 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+'''
+# To run this python script I used-
+for sub in 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0; do
+    sample="SRR25132914_sub_${sub}"
+    
+    kraken2 --db /lustrehome/nitika/bash_script_SRR25132914/kraken2_uhgg_db_v2.0.2 \
+        --threads 8 \
+        --report "${sample}_report.txt" \
+        --paired "${sample}_1.fastq" "${sample}_2.fastq" \
+        > "${sample}_output.txt"
+    
+    python /lustrehome/nitika/bash_script_SRR25132914/kraken2_results/kreport2mpa.py \
+        -r "${sample}_report.txt" \
+        -o "${sample}_mpa.txt" \
+        --display-header \
+        --read_count \
+        --remove-spaces
+done
+
+'''
