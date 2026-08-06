@@ -1,0 +1,92 @@
+(pipeline) [nitika@wn-4-3-13 bash_script_SRR25132914]$ bash kraken2.sh
+========================================
+Running Kraken2 for sample 0.1
+========================================
+Loading database information... done.
+153774 sequences (67.56 Mbp) processed in 7.150s (1290.5 Kseq/m, 567.01 Mbp/m).
+  44648 sequences classified (29.03%)
+  109126 sequences unclassified (70.97%)
+Finished sample 0.1
+
+========================================
+Running Kraken2 for sample 0.2
+========================================
+Loading database information... done.
+306333 sequences (134.60 Mbp) processed in 13.288s (1383.2 Kseq/m, 607.76 Mbp/m).
+  88862 sequences classified (29.01%)
+  217471 sequences unclassified (70.99%)
+Finished sample 0.2
+
+========================================
+Running Kraken2 for sample 0.3
+========================================
+Loading database information... done.
+458744 sequences (201.61 Mbp) processed in 18.179s (1514.1 Kseq/m, 665.40 Mbp/m).
+  133022 sequences classified (29.00%)
+  325722 sequences unclassified (71.00%)
+Finished sample 0.3
+
+========================================
+Running Kraken2 for sample 0.4
+========================================
+Loading database information... done.
+611122 sequences (268.66 Mbp) processed in 29.816s (1229.8 Kseq/m, 540.64 Mbp/m).
+  177295 sequences classified (29.01%)
+  433827 sequences unclassified (70.99%)
+Finished sample 0.4
+
+========================================
+Running Kraken2 for sample 0.5
+========================================
+Loading database information... done.
+763350 sequences (335.54 Mbp) processed in 33.347s (1373.5 Kseq/m, 603.73 Mbp/m).
+  221314 sequences classified (28.99%)
+  542036 sequences unclassified (71.01%)
+Finished sample 0.5
+
+========================================
+Running Kraken2 for sample 0.6
+========================================
+Loading database information... done.
+916020 sequences (402.63 Mbp) processed in 48.325s (1137.3 Kseq/m, 499.90 Mbp/m).
+  265454 sequences classified (28.98%)
+  650566 sequences unclassified (71.02%)
+Finished sample 0.6
+
+========================================
+Running Kraken2 for sample 0.7
+========================================
+Loading database information... done.
+1068434 sequences (469.55 Mbp) processed in 55.682s (1151.3 Kseq/m, 505.96 Mbp/m).
+  309416 sequences classified (28.96%)
+  759018 sequences unclassified (71.04%)
+Finished sample 0.7
+
+========================================
+Running Kraken2 for sample 0.8
+========================================
+Loading database information... done.
+1221226 sequences (536.73 Mbp) processed in 54.093s (1354.6 Kseq/m, 595.34 Mbp/m).
+  353700 sequences classified (28.96%)
+  867526 sequences unclassified (71.04%)
+Finished sample 0.8
+
+========================================
+Running Kraken2 for sample 0.9
+========================================
+Loading database information... done.
+1374174 sequences (604.02 Mbp) processed in 70.692s (1166.3 Kseq/m, 512.66 Mbp/m).
+  398333 sequences classified (28.99%)
+  975841 sequences unclassified (71.01%)
+Finished sample 0.9
+
+========================================
+Running Kraken2 for sample 1.0
+========================================
+Loading database information... done.
+1526784 sequences (671.08 Mbp) processed in 65.865s (1390.8 Kseq/m, 611.33 Mbp/m).
+  442463 sequences classified (28.98%)
+  1084321 sequences unclassified (71.02%)
+Finished sample 1.0
+
+All samples completed.
