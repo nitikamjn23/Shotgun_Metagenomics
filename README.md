@@ -10,11 +10,14 @@ for f in spades_output_*/assembly_graph_with_scaffolds.gfa; do
 done
 
 
-**#to combine the spades .gfa files
-**for d in spades_output_*; do
+#to combine the spades .gfa files
+for d in spades_output_; do
     f="$d/assembly_graph_with_scaffolds.gfa"
     if [ -f "$f" ]; then
         echo "### $d"
         cat "$f"
     fi
 done > combined_spades.gfa
+
+then
+ls -lh combined_spades.gfa
