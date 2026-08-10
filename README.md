@@ -21,3 +21,10 @@ done > combined_spades.gfa
 
 then
 ls -lh combined_spades.gfa
+
+
+
+
+Kraken2
+#to run single sample:
+**./kraken2.sh** SRR25132914_sub_0.8
