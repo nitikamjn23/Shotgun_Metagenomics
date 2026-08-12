@@ -28,3 +28,8 @@ ls -lh combined_spades.gfa
 Kraken2
 #to run single sample:
 **./kraken2.sh** SRR25132914_sub_0.8
+
+
+
+#quast (statistical package)
+QUAST (QUality ASsessment Tool) is a software toolkit used to assess the quality of genome and metagenome assemblies based on various assembly metrics. It includes QUAST for standard genome assemblies, MetaQUAST for metagenomic datasets, QUAST-LG for large genomes such as mammalian genomes, and Icarus, an interactive visualization tool for exploring the results.
