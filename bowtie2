@@ -1,0 +1,27 @@
+#Instructions:
+#https://github.com/BenLangmead/bowtie2
+
+bowtie 2 installation
+conda install bowtie2
+
+#build a small index:
+bowtie2-build reference.fa index_name
+
+#!/usr/bin/bash
+source /lustrehome/nitika/miniconda3/bin/activate
+conda activate pipeline
+
+SAMPLE="SRR25132914"
+BOWTIE2_DB="/lustrehome/nitika/bash_script/bowtie2/db_bowtie2/GRCh38_noalt_as"
+THREADS=16
+
+FASTP_R1="/lustrehome/nitika/bash_script/fastp_results/SRR25132914_trimmed_r1.fastq.gz"
+FASTP_R2="/lustrehome/nitika/bash_script/fastp_results/SRR25132914_trimmed_r2.fastq.gz"
+OUTPUT_DIR="/lustrehome/nitika/bash_script/bowtie2_SRR25132914_results"
+NONHUMAN_PREFIX="${OUTPUT_DIR}/${SAMPLE}_nonhuman_reads.gz"
+
+mkdir -p "$OUTPUT_DIR"
+
+bowtie2 -x "$BOWTIE2_DB" -1 "$FASTP_R1" -2 "$FASTP_R2" -p "$THREADS" --un-conc-gz "$NONHUMAN_PREFIX" -S /dev/null
+
+conda deactivate
