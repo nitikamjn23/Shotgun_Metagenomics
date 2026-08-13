@@ -1,0 +1,134 @@
+#!/usr/bin/bash
+#
+# quast.sh
+#
+# Runs QUAST ONCE on all 10 SPAdes assemblies together, producing a single
+# combined report where all samples can be compared side-by-side.
+#
+# Unlike spades.sh, this script does NOT take a single sample name as an
+# argument -- it reads the full sample list itself and builds the QUAST
+# command from all 10 contigs.fasta files at once. This is why the
+# corresponding HTCondor submission file queues only ONE job, not one job
+# per sample.
+#
+set -euo pipefail
+
+source /lustrehome/nitika/miniconda3/bin/activate
+conda activate quast_env
+# NOTE: earlier testing found quast.py installed in the 'quast_env' conda
+# environment, not 'pipeline'. If QUAST is also available in 'pipeline',
+# change the line above to: conda activate pipeline
+
+# -----------------------------------------------------------------------------
+# CONFIGURATION
+# -----------------------------------------------------------------------------
+
+QUAST_CMD="/lustrehome/nitika/miniconda3/envs/quast_env/bin/quast.py"
+
+# Base directory containing spades_output_<SAMPLE> folders
+SPADES_BASE_DIR="/lustrehome/nitika/bash_script_SRR25132914/spades_output"
+
+# Sample list -- one subsampling fraction per line: 0.1, 0.2, ... 1.0
+SAMPLE_FILE="/lustrehome/nitika/bash_script_SRR25132914/spades_output/quast_analysis/sample.txt"
+
+# Where the single combined QUAST report will be written
+OUTPUT_DIR="/lustrehome/nitika/bash_script_SRR25132914/spades_output/quast_analysis/quast_combined_results"
+
+# Must match request_cpus in quast_submission_condor
+THREADS=16
+
+# -----------------------------------------------------------------------------
+# OPTIONAL: reference genome
+# -----------------------------------------------------------------------------
+# You did not provide a reference genome, so QUAST will run in reference-free
+# mode. You will still get: number of contigs, total length, largest contig,
+# N50, N90, L50/L90, GC%, and other assembly-only statistics for all 10
+# samples side-by-side.
+#
+# What you will NOT get without a reference: genome fraction, number of
+# misassemblies, mismatches/indels per 100kb, NGA50. These require a known
+# reference genome for SRR25132914's organism to align contigs against.
+#
+# If you obtain one later, set the path below and it will be used
+# automatically:
+REFERENCE=""
+# REFERENCE="/path/to/reference.fasta"
+
+# -----------------------------------------------------------------------------
+# CHECKS
+# -----------------------------------------------------------------------------
+
+echo "=============================================="
+echo " QUAST combined run (10 samples)"
+echo "=============================================="
+
+if ! command -v "${QUAST_CMD}" >/dev/null 2>&1; then
+    echo "ERROR: QUAST command not found at ${QUAST_CMD}" >&2
+    echo "       Check that quast_env has QUAST installed at that path." >&2
+    exit 1
+fi
+
+if [[ ! -f "${SAMPLE_FILE}" ]]; then
+    echo "ERROR: Sample file not found: ${SAMPLE_FILE}" >&2
+    exit 1
+fi
+
+# Build the list of contigs.fasta paths and matching labels from sample.txt
+CONTIGS_LIST=()
+LABELS_LIST=()
+
+while IFS= read -r SAMPLE || [[ -n "${SAMPLE}" ]]; do
+    # skip blank lines
+    [[ -z "${SAMPLE}" ]] && continue
+
+    CONTIGS="${SPADES_BASE_DIR}/spades_output_${SAMPLE}/contigs.fasta"
+
+    if [[ ! -f "${CONTIGS}" ]]; then
+        echo "ERROR: Missing assembly for sample '${SAMPLE}': ${CONTIGS}" >&2
+        echo "       Check that the SPAdes job for this sample finished successfully." >&2
+        exit 1
+    fi
+
+    CONTIGS_LIST+=("${CONTIGS}")
+    LABELS_LIST+=("${SAMPLE}")
+    echo "Found assembly for ${SAMPLE}: ${CONTIGS}"
+done < "${SAMPLE_FILE}"
+
+if [[ ${#CONTIGS_LIST[@]} -eq 0 ]]; then
+    echo "ERROR: No samples found in ${SAMPLE_FILE}" >&2
+    exit 1
+fi
+
+echo "----------------------------------------------"
+echo "Total assemblies to compare: ${#CONTIGS_LIST[@]}"
+echo "Output directory: ${OUTPUT_DIR}"
+echo "Threads: ${THREADS}"
+echo "----------------------------------------------"
+
+# Build comma-separated labels string, e.g. 0.1,0.2,0.3,...,1.0
+LABELS=$(IFS=,; echo "${LABELS_LIST[*]}")
+
+# -----------------------------------------------------------------------------
+# RUN QUAST ONCE ON ALL ASSEMBLIES
+# -----------------------------------------------------------------------------
+
+QUAST_ARGS=(
+    "${CONTIGS_LIST[@]}"
+    -o "${OUTPUT_DIR}"
+    -t "${THREADS}"
+    --labels "${LABELS}"
+)
+
+if [[ -n "${REFERENCE}" ]]; then
+    QUAST_ARGS+=( -r "${REFERENCE}" )
+fi
+
+echo "Running QUAST..."
+"${QUAST_CMD}" "${QUAST_ARGS[@]}"
+
+echo "----------------------------------------------"
+echo "Done. Combined QUAST report is in:"
+echo "  ${OUTPUT_DIR}"
+echo "  Open ${OUTPUT_DIR}/report.html for the interactive comparison table."
+echo "  Or see ${OUTPUT_DIR}/report.txt / report.tsv for a plain-text version."
+echo "=============================================="
