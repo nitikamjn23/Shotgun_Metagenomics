@@ -1,0 +1,15 @@
+universe = vanilla
+
+executable = <path/sile.sh>
+
+log    = <path/file.log>
+error  = <path/file.err>
+output = <path/output.out>
+
+# QUAST is run once, comparing all 10 assemblies together, so this is a
+# single job (no "queue sample from sample.txt" loop like the SPAdes file).
+# request_cpus matches the -t value used inside quast.sh (THREADS=16).
+request_cpus = 16
+request_memory = 32 GB
+
+queue 1
