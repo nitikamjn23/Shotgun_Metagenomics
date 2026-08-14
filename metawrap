@@ -1,1 +1,46 @@
 #metawrap installation
+
+conda install -n base -c conda-forge mamba -y
+mamba --version
+mamba create -y -n metawrap-env -c ursky metawrap-mg=1.3.2
+
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
+
+conda config --show channels
+
+conda create -y -n metawrap-env python=2.7
+conda activate metawrap-env
+mamba install --only-deps -c ursky metawrap-mg
+
+git clone https://github.com/bxlab/metaWRAP.git
+
+cd /lustrehome/nitika/metaWRAP
+chmod +x bin/*
+export PATH=/lustrehome/nitika/metaWRAP/bin:$PATH
+which metawrap
+metawrap --help
+metawrap --show-config
+metawrap read_qc -h
+metawrap assembly -h
+metawrap binning -h
+
+
+for x in fastqc fastp megahit spades.py bowtie2 samtools kraken2 metabat2 jgi_summarize_bam_contig_depths concoct checkm prodigal quast.py prokka; do     printf "%-35s" "$x";     command -v "$x" || echo "NOT FOUND"; done
+
+mamba install -y -c ursky -c bioconda -c conda-forge megahit metabat2 maxbin2 concoct bowtie2 samtools prodigal checkm-genome fastqc fastp quast prokka
+
+for x in fastqc fastp megahit bowtie2 samtools metabat2 jgi_summarize_bam_contig_depths concoct checkm prodigal quast.py prokka; do     printf "%-35s" "$x";     command -v "$x" || echo "NOT FOUND"; done
+
+mamba install -y -c bioconda -c conda-forge quast
+
+which quast.py
+quast.py --version
+conda list | grep -i quast
+ls -lh $CONDA_PREFIX/bin/ | grep -i quast
+quast --version
+which quast
+
+for x in metawrap metabat2 run_MaxBin.pl concoct checkm quast bowtie2 samtools; do     printf "%-30s" "$x";     command -v "$x" || echo "NOT FOUND"; done
+
