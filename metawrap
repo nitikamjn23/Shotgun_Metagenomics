@@ -44,3 +44,12 @@ which quast
 
 for x in metawrap metabat2 run_MaxBin.pl concoct checkm quast bowtie2 samtools; do     printf "%-30s" "$x";     command -v "$x" || echo "NOT FOUND"; done
 
+#install bwa via-
+conda install -c bioconda bwa -y
+#accept- 
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+
+#samtool
+conda install -c bioconda "samtools>=1.9" -y
+
