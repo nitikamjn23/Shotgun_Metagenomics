@@ -9,7 +9,7 @@ To evaluate the effect of sequencing depth on taxonomic classification and MAG r
 
 **Tool used:** [`seqkit sample`](https://bioinf.shenwei.me/seqkit/usage/#sample)
 **Purpose:** Simulate varying sequencing effort and assess how downstream results (assembly quality, MAG recovery, taxonomic accuracy) scale with read depth
-
+the shell script I used- https://github.com/nitikamjn23/Shotgun_Metagenomics/blob/main/subsampling.sh 
 
 **Spades output analysis:
 **
