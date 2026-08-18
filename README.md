@@ -13,20 +13,23 @@ the shell script I used- https://github.com/nitikamjn23/Shotgun_Metagenomics/blo
 
 ## Tools & Dependencies
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| Miniconda | ✅ (add your version) | Environment and package management |
-| FastQC | v0.12.1 | Raw read quality control |
-| MultiQC |  | Aggregated QC report across samples |
-| seqkit |  | Read subsampling (depth simulation) |
-| fastp | 0.23.4 | Adapter/quality trimming of subsampled reads |
-| Bowtie2 | 2.5.5 | Host read removal (alignment to host genome) |
-| SPAdes (metaSPAdes) | v4.2.0 | Metagenomic assembly |
-| QUAST (metaQUAST) | v5.0.2 | Assembly quality evaluation |
-| MetaWRAP |  | Contig binning and bin refinement |
-| CheckM |  | MAG completeness/contamination assessment |
-| Kraken2 | 2.1.2 | Taxonomic classification (read-based) |
-| MetaPhlAn4 |  | Taxonomic profiling (marker-gene based) |
+## Tools & Dependencies
+
+| Tool (Version) | Files | Purpose | Reference |
+|-----------------|-------|---------|-----------|
+| Miniconda | `environment.yml` | Environment and package management | [Miniconda Docs](https://docs.conda.io/en/latest/miniconda.html) |
+| FastQC (v0.12.1) | `scripts/01_fastqc.sh` | Raw read quality control | [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) |
+| MultiQC (⏳ pending) | `scripts/02_multiqc.sh` | Aggregated QC report across samples | [MultiQC](https://multiqc.info/) |
+| seqkit (v2.13.0) | `scripts/03_subsampling.sh` | Read subsampling (depth simulation) | [seqkit](https://bioinf.shenwei.me/seqkit/) |
+| fastp (0.23.4) | `scripts/04_fastp.sh` | Adapter/quality trimming of subsampled reads | [fastp](https://github.com/OpenGene/fastp) |
+| Bowtie2 (2.5.5) | `scripts/05_bowtie2.sh` | Host read removal (alignment to host genome) | [Bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml) |
+| SPAdes/metaSPAdes (v4.2.0) | `scripts/06_spades.sh` | Metagenomic assembly | [SPAdes](https://github.com/ablab/spades) |
+| QUAST/metaQUAST (⏳ pending) | `scripts/07_quast.sh` | Assembly quality evaluation | [QUAST](https://quast.sourceforge.net/) |
+| MetaWRAP (⏳ pending) | `scripts/08_metawrap.sh` | Contig binning and bin refinement | [MetaWRAP](https://github.com/bxlab/metaWRAP) |
+| CheckM (⏳ pending) | `scripts/09_checkm.sh` | MAG completeness/contamination assessment | [CheckM](https://github.com/Ecogenomics/CheckM) |
+| Kraken2 (2.1.2) | `scripts/10_kraken2.sh` | Taxonomic classification (read-based) | [Kraken2](https://github.com/DerekyRK/Kraken2) |
+| MetaPhlAn4 (⏳ pending) | `scripts/11_metaphlan4.sh` | Taxonomic profiling (marker-gene based) | [MetaPhlAn4](https://github.com/biobakery/MetaPhlAn) |
+
 
 
 **Spades output analysis:
