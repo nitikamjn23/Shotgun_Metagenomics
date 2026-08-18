@@ -1,6 +1,9 @@
-**Shotgun metagenomics pipeline for gut microbiome analysis
-**
-This pipeline evaluates how sequencing depth affects taxonomic profiling and metagenome-assembled genome (MAGs) recovery in shotgun metagenomics. Using mock community shotgun sequencing data (Illumina/Nanopore/PacBio reads) generated in a prior benchmarking study, reads were subsampled at increasing depths to simulate varying sequencing effort. For each subsampled dataset, taxonomic classification and MAG assembly were performed to assess how output quality and accuracy scale with read depth.
+**Shotgun metagenomics pipeline for gut microbiome analysis**
+This pipeline evaluates how sequencing depth affects taxonomic profiling and metagenome-assembled genome (MAG) recovery in shotgun metagenomics. Using mock community shotgun sequencing reads generated in a prior benchmarking study, reads were subsampled at ten increasing depths (10% through 100%, in 10% increments) using seqkit, with one subsampled dataset generated per fraction. For each subsampled dataset, taxonomic classification and MAG assembly were performed to assess how output quality and accuracy scale with read depth.
+
+**Workflow Overview**
+<img width="4828" height="5945" alt="Christmas Shopping Decision-2026-08-18-145725" src="https://github.com/user-attachments/assets/5c23d9bf-d32f-409b-8125-2b80ef669ff0" />
+
 **Spades output analysis:
 **
 #to check the lists all the assemblies in spades output directory.
