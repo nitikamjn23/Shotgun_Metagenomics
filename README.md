@@ -1,4 +1,4 @@
-**# this is myinternship pipline code
+**Shotgun metagenomics pipeline for gut microbiome analysis
 **
 
 **Spades output analysis:
