@@ -17,16 +17,16 @@ the shell script I used- https://github.com/nitikamjn23/Shotgun_Metagenomics/blo
 |------|---------|---------|
 | Miniconda | ✅ (add your version) | Environment and package management |
 | FastQC | v0.12.1 | Raw read quality control |
-| MultiQC | ⏳ pending | Aggregated QC report across samples |
-| seqkit | ⏳ pending | Read subsampling (depth simulation) |
+| MultiQC |  | Aggregated QC report across samples |
+| seqkit |  | Read subsampling (depth simulation) |
 | fastp | 0.23.4 | Adapter/quality trimming of subsampled reads |
-| Bowtie2 | ⏳ pending | Host read removal (alignment to host genome) |
+| Bowtie2 | 2.5.5 | Host read removal (alignment to host genome) |
 | SPAdes (metaSPAdes) | v4.2.0 | Metagenomic assembly |
-| QUAST (metaQUAST) | ⏳ pending | Assembly quality evaluation |
-| MetaWRAP | ⏳ pending | Contig binning and bin refinement |
-| CheckM | ⏳ pending | MAG completeness/contamination assessment |
+| QUAST (metaQUAST) | v5.0.2 | Assembly quality evaluation |
+| MetaWRAP |  | Contig binning and bin refinement |
+| CheckM |  | MAG completeness/contamination assessment |
 | Kraken2 | 2.1.2 | Taxonomic classification (read-based) |
-| MetaPhlAn4 | ⏳ pending | Taxonomic profiling (marker-gene based) |
+| MetaPhlAn4 |  | Taxonomic profiling (marker-gene based) |
 
 
 **Spades output analysis:
