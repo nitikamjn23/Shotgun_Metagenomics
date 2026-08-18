@@ -52,25 +52,3 @@ seqkit stats -a -T -j ${THREADS} ${ALL_FILES} > "$SUMMARY"
 echo "----------------------------------------"
 echo "All done! Files saved in: $OUTDIR/"
 echo "Read stats summary saved at: $SUMMARY"
-
-
-
-
-
-
-#!/bin/bash
-source /lustrehome/nitika/miniconda3/bin/activate
-conda activate pipeline
-
-INDIR="/lustrehome/nitika/bash_script/fastq_file"
-OUTDIR="${INDIR}/subsampled_reads"
-SUMMARY="${OUTDIR}/read_counts_summary.tsv"
-THREADS=16
-
-ALL_FILES=$(ls ${OUTDIR}/SRR25132914_R*_sub_*.fastq.gz)
-
-seqkit stats -a -T -j ${THREADS} ${ALL_FILES} > "$SUMMARY"
-
-echo "----------------------------------------"
-echo "All done! Files saved in: $OUTDIR/"
-echo "Read stats summary saved at: $SUMMARY"
