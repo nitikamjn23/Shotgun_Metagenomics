@@ -4,6 +4,13 @@ This pipeline evaluates how sequencing depth affects taxonomic profiling and met
 **Workflow Overview**
 <img width="4828" height="5945" alt="Christmas Shopping Decision-2026-08-18-145725" src="https://github.com/user-attachments/assets/5c23d9bf-d32f-409b-8125-2b80ef669ff0" />
 
+**Subsampling Strategy**
+To evaluate the effect of sequencing depth on taxonomic classification and MAG recovery, raw reads were subsampled at ten increasing fractions of the original dataset: **10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, and 100%**.
+
+**Tool used:** [`seqkit sample`](https://bioinf.shenwei.me/seqkit/usage/#sample)
+**Purpose:** Simulate varying sequencing effort and assess how downstream results (assembly quality, MAG recovery, taxonomic accuracy) scale with read depth
+
+
 **Spades output analysis:
 **
 #to check the lists all the assemblies in spades output directory.
