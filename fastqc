@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+source ~/miniconda3/bin/activate
+conda activate pipeline
+
+mkdir -p fastqc_results
+fastqc /lustrehome/nitika/script_practice/SRR25132914/output_dir/SRR25132914.sra_* -o fastqc_results
+
+#run:
+bash fastqc.sh
