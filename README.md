@@ -24,7 +24,7 @@ the shell script I used- https://github.com/nitikamjn23/Shotgun_Metagenomics/blo
 | fastp (0.23.4) | `fastp.sh`, 'fastp_subsampling_trimming.sh', '/fastp_trimming_one_sample.sh' | Adapter/quality trimming of subsampled reads | [fastp](https://github.com/OpenGene/fastp) |
 | Bowtie2 (2.5.5) | `bowtie2` | Host read removal (alignment to host genome) | [Bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml) |
 | SPAdes/metaSPAdes (v4.2.0) | SPAdes.sh | Metagenomic assembly | [SPAdes](https://github.com/ablab/spades) |
-| QUAST/metaQUAST (⏳ ) | `quast.sh` | Assembly quality evaluation | [QUAST](https://quast.sourceforge.net/) |
+| QUAST/metaQUAST (v5.3.0 ) | `quast.sh` | Assembly quality evaluation | [QUAST](https://quast.sourceforge.net/) |
 | MetaWRAP (⏳ ) |  | Contig binning and bin refinement | [MetaWRAP](https://github.com/bxlab/metaWRAP) |
 | CheckM (⏳ ) |  | MAG completeness/contamination assessment | [CheckM](https://github.com/Ecogenomics/CheckM) |
 | Kraken2 (2.1.2) | `kraken2.sh`, 'kraken2_jupyter_visualisation.py' | Taxonomic classification (read-based) | [Kraken2](https://github.com/DerekyRK/Kraken2) |
