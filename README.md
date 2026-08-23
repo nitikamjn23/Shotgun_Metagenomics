@@ -28,7 +28,7 @@ the shell script I used- https://github.com/nitikamjn23/Shotgun_Metagenomics/blo
 | MetaWRAP (⏳ ) |  | Contig binning and bin refinement | [MetaWRAP](https://github.com/bxlab/metaWRAP) |
 | CheckM (⏳ ) |  | MAG completeness/contamination assessment | [CheckM](https://github.com/Ecogenomics/CheckM) |
 | Kraken2 (2.1.2) | `kraken2.sh`, 'kraken2_jupyter_visualisation.py' | Taxonomic classification (read-based) | [Kraken2](https://github.com/DerekyRK/Kraken2) |
-| MetaPhlAn4 (⏳ ) | `MetaPhlAn.sh`, MetaPhlAn.py | Taxonomic profiling (marker-gene based) | [MetaPhlAn4](https://github.com/biobakery/MetaPhlAn) |
+| MetaPhlAn4 (v4.2.6) | `MetaPhlAn.sh`, MetaPhlAn.py | Taxonomic profiling (marker-gene based) | [MetaPhlAn4](https://github.com/biobakery/MetaPhlAn) |
 
 
 
