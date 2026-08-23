@@ -19,7 +19,7 @@ the shell script I used- https://github.com/nitikamjn23/Shotgun_Metagenomics/blo
 |-----------------|-------|---------|-----------|
 | Miniconda |  | Environment and package management | [Miniconda Docs](https://docs.conda.io/en/latest/miniconda.html) |
 | FastQC (v0.12.1) | `fastqc.sh` | Raw read quality control | [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) |
-| MultiQC (⏳ ) |  | Aggregated QC report across samples | [MultiQC](https://multiqc.info/) |
+| MultiQC (v1.25) |  | Aggregated QC report across samples | [MultiQC](https://multiqc.info/) |
 | seqkit (v2.13.0) | `subsampling.sh` | Read subsampling (depth simulation) | [seqkit](https://bioinf.shenwei.me/seqkit/) |
 | fastp (0.23.4) | `fastp.sh`, 'fastp_subsampling_trimming.sh', '/fastp_trimming_one_sample.sh' | Adapter/quality trimming of subsampled reads | [fastp](https://github.com/OpenGene/fastp) |
 | Bowtie2 (2.5.5) | `bowtie2` | Host read removal (alignment to host genome) | [Bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml) |
