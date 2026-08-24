@@ -1,0 +1,6 @@
+top_n = 15
+mean_abund = rel_abund.mean(axis=1).sort_values(ascending=False)
+top_taxa = mean_abund.head(top_n).index
+
+plot_df = rel_abund.loc[top_taxa].copy()
+plot_df.loc["Other"] = rel_abund.drop(top_taxa).sum(axis=0)
