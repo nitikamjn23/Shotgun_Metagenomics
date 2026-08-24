@@ -1,0 +1,11 @@
+import numpy as np
+
+def shannon(col):
+    p = col[col > 0] / col.sum()
+    return -np.sum(p * np.log(p))
+
+alpha_div = pd.DataFrame({
+    "Observed_species": (counts > 0).sum(axis=0),
+    "Shannon": counts.apply(shannon, axis=0),
+})
+alpha_div
