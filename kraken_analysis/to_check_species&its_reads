@@ -1,0 +1,5 @@
+numeric_cols = df_species.select_dtypes(include='number').columns
+
+species_total_reads = df_species.groupby('Species')[numeric_cols].sum().sum(axis=1).reset_index()
+species_total_reads.columns = ['Species', 'Total_Reads']
+species_total_reads
