@@ -1,0 +1,16 @@
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(10,6))
+plot_df.T.plot(kind="bar", stacked=True, ax=ax, colormap="tab20")
+
+ax.set_ylabel("Relative abundance (%)")
+ax.set_xlabel("Sequencing depth (subsample)")
+ax.set_title(f"Taxonomic composition (top {top_n} species) across sequencing depth")
+
+short_labels = [c.replace("Sample #", "S") for c in plot_df.columns]
+ax.set_xticklabels(short_labels, rotation=0)
+
+ax.legend(bbox_to_anchor=(1.02, 1), loc="upper left", fontsize=8, title="Species")
+fig.tight_layout()
+plt.savefig("taxonomic_composition.png", dpi=300, bbox_inches="tight")
+plt.show()
