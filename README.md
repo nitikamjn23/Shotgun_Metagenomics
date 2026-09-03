@@ -2,7 +2,8 @@
 This pipeline evaluates how sequencing depth affects taxonomic profiling and metagenome-assembled genome (MAG) recovery in shotgun metagenomics. Using mock community shotgun sequencing reads generated in a prior benchmarking study, reads were subsampled at ten increasing depths (10% through 100%, in 10% increments) using seqkit, with one subsampled dataset generated per fraction. For each subsampled dataset, taxonomic classification and MAG assembly were performed to assess how output quality and accuracy scale with read depth.
 
 **Workflow Overview**
-<img width="2135" height="2166" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/ae991626-9252-4573-95b3-2b65e79d7278" />
+<img width="5286" height="6680" alt="Metagenomic Assembly-2026-09-03-075438" src="https://github.com/user-attachments/assets/c9d0c0cf-ac35-4ebd-a391-ae683d03a227" />
+
 
 
 
