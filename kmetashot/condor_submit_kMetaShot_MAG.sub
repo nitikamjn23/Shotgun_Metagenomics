@@ -1,0 +1,30 @@
+```text
+universe = vanilla
+
+executable = /path/to/scripts/run_kMetaShot_MAG.sh
+
+arguments = $(SAMPLE)
+
+request_cpus = 10
+request_memory = 32GB
+
+output = /path/to/results/condor_$(SAMPLE).out
+error  = /path/to/results/condor_$(SAMPLE).err
+log    = /path/to/results/condor_$(SAMPLE).log
+
+getenv = True
+should_transfer_files = NO
+
+queue SAMPLE in (
+    binning_SRR25132914_0.1
+    binning_SRR25132914_0.2
+    binning_SRR25132914_0.3
+    binning_SRR25132914_0.4
+    binning_SRR25132914_0.5
+    binning_SRR25132914_0.6
+    binning_SRR25132914_0.7
+    binning_SRR25132914_0.8
+    binning_SRR25132914_0.9
+    binning_SRR25132914_1.0
+)
+```
