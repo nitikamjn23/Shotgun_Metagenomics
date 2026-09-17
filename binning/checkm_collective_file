@@ -1,0 +1,12 @@
+# make ONE collective CheckM2 file
+
+echo -e "Fraction\tName\tCompleteness\tContamination" > all_checkm2_results.tsv
+
+for dir in binning_SRR25132914_*
+do
+    fraction=${dir#binning_SRR25132914_}
+
+    awk -v frac="$fraction" 'NR>1 {print frac "\t" $1 "\t" $2 "\t" $3}' \
+    "$dir/checkm/checkm2_out/quality_report.tsv" \
+    >> all_checkm2_results.tsv
+done
