@@ -1,16 +1,79 @@
+import csv
 import matplotlib.pyplot as plt
 
-fig, ax = plt.subplots(figsize=(10,6))
-plot_df.T.plot(kind="bar", stacked=True, ax=ax, colormap="tab20")
+# ------------------------------------------------------------------
+# 1. Load data (stdlib csv, no pandas)
+# ------------------------------------------------------------------
+species_names = []
+counts = []  # list of lists: counts[i] = [sample1_count, ..., sample10_count] for species i
+
+with open("species_filtered_kraken2_output.tsv", newline="") as f:
+    reader = csv.reader(f, delimiter="\t")
+    header = next(reader)
+    sample_cols = [c for c in header if c.startswith("Sample #")]
+    sample_idx = [header.index(c) for c in sample_cols]
+    species_idx = header.index("Species")
+
+    for row in reader:
+        species_names.append(row[species_idx])
+        counts.append([int(row[i]) for i in sample_idx])
+
+n_species = len(species_names)
+n_samples = len(sample_cols)
+
+# ------------------------------------------------------------------
+# 2. Convert raw counts -> relative abundance (%) per sample
+# ------------------------------------------------------------------
+sample_totals = [sum(counts[i][j] for i in range(n_species)) for j in range(n_samples)]
+
+rel_abund = [
+    [100 * counts[i][j] / sample_totals[j] for j in range(n_samples)]
+    for i in range(n_species)
+]
+
+# ------------------------------------------------------------------
+# 3. Collapse to top N taxa + "Other"
+# ------------------------------------------------------------------
+top_n = 15
+mean_abund = [sum(rel_abund[i]) / n_samples for i in range(n_species)]
+order = sorted(range(n_species), key=lambda i: mean_abund[i], reverse=True)
+top_indices = order[:top_n]
+other_indices = order[top_n:]
+
+plot_labels = [species_names[i] for i in top_indices] + ["Other"]
+plot_data = [rel_abund[i] for i in top_indices]
+other_row = [sum(rel_abund[i][j] for i in other_indices) for j in range(n_samples)]
+plot_data.append(other_row)
+
+# ------------------------------------------------------------------
+# 4. Map sample columns -> sequencing-depth fractions
+# ------------------------------------------------------------------
+depths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+short_labels = [f"sub_{d:.1f}" for d in depths]
+
+# ------------------------------------------------------------------
+# 5. Plot (manual stacked bar, no pandas .plot())
+# ------------------------------------------------------------------
+fig, ax = plt.subplots(figsize=(10, 6))
+
+cmap = plt.get_cmap("tab20")
+colors = [cmap(i / max(len(plot_labels) - 1, 1)) for i in range(len(plot_labels))]
+
+x = range(n_samples)
+bottom = [0] * n_samples
+for row, label, color in zip(plot_data, plot_labels, colors):
+    ax.bar(x, row, bottom=bottom, label=label, color=color)
+    bottom = [b + r for b, r in zip(bottom, row)]
 
 ax.set_ylabel("Relative abundance (%)")
 ax.set_xlabel("Sequencing depth (subsample)")
 ax.set_title(f"Taxonomic composition (top {top_n} species) across sequencing depth")
 
-short_labels = [c.replace("Sample #", "S") for c in plot_df.columns]
+ax.set_xticks(list(x))
 ax.set_xticklabels(short_labels, rotation=0)
 
 ax.legend(bbox_to_anchor=(1.02, 1), loc="upper left", fontsize=8, title="Species")
 fig.tight_layout()
 plt.savefig("taxonomic_composition.png", dpi=300, bbox_inches="tight")
+plt.savefig("taxonomic_composition.svg", bbox_inches="tight")
 plt.show()
