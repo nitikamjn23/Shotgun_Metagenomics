@@ -6,20 +6,9 @@ This pipeline evaluates how sequencing depth affects taxonomic profiling and met
 <img width="1964" height="2513" alt="Incomplete_pipeline_workflow (3)_page-0001" src="https://github.com/user-attachments/assets/053e5f90-1f88-4a6c-9297-fb0d4a230a2d" />
 Figure Overview of metagenomic pipeline used in this study. The workflow begins with downloading the raw sequencing data, followed by read-quality assessment with FastQC and MultiQC, and adapter and quality trimming with fastp. The analysis is then divided into two approaches: the yellow section represents the de novo assembly-based approach, including assembly, binning, MAG recovery, and quality assessment, and the red section represents the reference-based taxonomic classification approach, using Kraken2 and MetaPhlAn4 for direct taxonomic profiling of sequencing reads.
 
-
-**Subsampling Strategy**
-To evaluate the effect of sequencing depth on taxonomic classification and MAG recovery, raw reads were subsampled at ten increasing fractions of the original dataset: **10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, and 100%**.
-
-**Tool used:** [`seqkit sample`](https://bioinf.shenwei.me/seqkit/usage/#sample)
-**Purpose:** Simulate varying sequencing effort and assess how downstream results (assembly quality, MAG recovery, taxonomic accuracy) scale with read depth
-the shell script I used- https://github.com/nitikamjn23/Shotgun_Metagenomics/blob/main/subsampling.sh 
-
-## Tools & Dependencies
-
 ## Tools & Dependencies
 
 Table 1 Bioinformatics tools used in metagenomic analysis, including their respective purposes and key parameters/databases.
-## Software and Computational Tools
 
 | Tool                         | Purpose                                                                                                                             | Key parameters / usage                                                                                  |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
